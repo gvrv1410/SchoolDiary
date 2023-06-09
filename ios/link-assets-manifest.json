@@ -1,0 +1,41 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/Archivo-Black.ttf",
+      "sha1": "3a12e56d802fdc57425db966074f849468a5eead"
+    },
+    {
+      "path": "assets/fonts/Archivo-Bold.ttf",
+      "sha1": "2a19bab16287233613894bc9d8ecb79c4176aabd"
+    },
+    {
+      "path": "assets/fonts/Archivo-ExtraBold.ttf",
+      "sha1": "45f64420d5dfd5c1c307a43e020ebc6fac173d60"
+    },
+    {
+      "path": "assets/fonts/Archivo-ExtraLight.ttf",
+      "sha1": "80c826c8a7315d4657933956268c35555bfc030b"
+    },
+    {
+      "path": "assets/fonts/Archivo-Light.ttf",
+      "sha1": "8480c5354ab2ae08b633132742cd63d905fd6602"
+    },
+    {
+      "path": "assets/fonts/Archivo-Medium.ttf",
+      "sha1": "4a5bc984a52f76a35070fa8292a3c5e1f4d86c18"
+    },
+    {
+      "path": "assets/fonts/Archivo-Regular.ttf",
+      "sha1": "3342cabdd12438c6961fd083172bc6dda3108d56"
+    },
+    {
+      "path": "assets/fonts/Archivo-SemiBold.ttf",
+      "sha1": "08ee81beb5c6fc69120203e18caae3453252a397"
+    },
+    {
+      "path": "assets/fonts/Archivo-Thin.ttf",
+      "sha1": "7f78e77d348078e6619d56ba4b2fcd918752501f"
+    }
+  ]
+}
