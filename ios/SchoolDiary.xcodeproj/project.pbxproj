@@ -8,21 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* SchoolDiaryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SchoolDiaryTests.m */; };
+		029E08D554574D1E931EEEB1 /* Archivo-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 344656CFBB9142C78D8DFC96 /* Archivo-Black.ttf */; };
 		0C80B921A6F3F58F76C31292 /* libPods-SchoolDiary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-SchoolDiary.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		7699B88040F8A987B510C191 /* libPods-SchoolDiary-SchoolDiaryTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-SchoolDiary-SchoolDiaryTests.a */; };
-		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		029E08D554574D1E931EEEB1 /* Archivo-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 344656CFBB9142C78D8DFC96 /* Archivo-Black.ttf */; };
-		7A32E77BBD69448F9FA884BE /* Archivo-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 131E752158EA4438AA8F4B13 /* Archivo-Bold.ttf */; };
-		E49510C11EFD4D5FB360D2E7 /* Archivo-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9500BA5186344FEAB8E82FB4 /* Archivo-ExtraBold.ttf */; };
-		A9B71AA5E80446F5AF911CA0 /* Archivo-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06C8F53D6E8D4223BD557DC4 /* Archivo-ExtraLight.ttf */; };
-		6E2C5FE63C7D4A70845D1D2C /* Archivo-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EAC07ADD942E4B2EB5713EA9 /* Archivo-Light.ttf */; };
-		823DE69633CD407FA7623F62 /* Archivo-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D7FC451622244F5A905FA17 /* Archivo-Medium.ttf */; };
 		2BAD0BCF7C9F409997D9D556 /* Archivo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B085A459A25449E29A534525 /* Archivo-Regular.ttf */; };
 		54E7451470474B65BA5FDA6F /* Archivo-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D9B1298454D4CEE85B7A090 /* Archivo-SemiBold.ttf */; };
+		6E2C5FE63C7D4A70845D1D2C /* Archivo-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EAC07ADD942E4B2EB5713EA9 /* Archivo-Light.ttf */; };
+		7699B88040F8A987B510C191 /* libPods-SchoolDiary-SchoolDiaryTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-SchoolDiary-SchoolDiaryTests.a */; };
+		7A32E77BBD69448F9FA884BE /* Archivo-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 131E752158EA4438AA8F4B13 /* Archivo-Bold.ttf */; };
+		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		823DE69633CD407FA7623F62 /* Archivo-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D7FC451622244F5A905FA17 /* Archivo-Medium.ttf */; };
 		89F42783E804419D9D2ADC21 /* Archivo-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AEE8ACFEFF5D4C39A0668168 /* Archivo-Thin.ttf */; };
+		A9B71AA5E80446F5AF911CA0 /* Archivo-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06C8F53D6E8D4223BD557DC4 /* Archivo-ExtraLight.ttf */; };
+		E49510C11EFD4D5FB360D2E7 /* Archivo-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9500BA5186344FEAB8E82FB4 /* Archivo-ExtraBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +39,8 @@
 		00E356EE1AD99517003FC87E /* SchoolDiaryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SchoolDiaryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* SchoolDiaryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SchoolDiaryTests.m; sourceTree = "<group>"; };
+		06C8F53D6E8D4223BD557DC4 /* Archivo-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Archivo-ExtraLight.ttf"; path = "../assets/fonts/Archivo-ExtraLight.ttf"; sourceTree = "<group>"; };
+		131E752158EA4438AA8F4B13 /* Archivo-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Archivo-Bold.ttf"; path = "../assets/fonts/Archivo-Bold.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* SchoolDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = SchoolDiary/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = SchoolDiary/AppDelegate.mm; sourceTree = "<group>"; };
@@ -46,22 +48,20 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SchoolDiary/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SchoolDiary/main.m; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-SchoolDiary-SchoolDiaryTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SchoolDiary-SchoolDiaryTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		344656CFBB9142C78D8DFC96 /* Archivo-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Archivo-Black.ttf"; path = "../assets/fonts/Archivo-Black.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-SchoolDiary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SchoolDiary.debug.xcconfig"; path = "Target Support Files/Pods-SchoolDiary/Pods-SchoolDiary.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-SchoolDiary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SchoolDiary.release.xcconfig"; path = "Target Support Files/Pods-SchoolDiary/Pods-SchoolDiary.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-SchoolDiary-SchoolDiaryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SchoolDiary-SchoolDiaryTests.debug.xcconfig"; path = "Target Support Files/Pods-SchoolDiary-SchoolDiaryTests/Pods-SchoolDiary-SchoolDiaryTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5D9B1298454D4CEE85B7A090 /* Archivo-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Archivo-SemiBold.ttf"; path = "../assets/fonts/Archivo-SemiBold.ttf"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-SchoolDiary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SchoolDiary.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = SchoolDiary/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-SchoolDiary-SchoolDiaryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SchoolDiary-SchoolDiaryTests.release.xcconfig"; path = "Target Support Files/Pods-SchoolDiary-SchoolDiaryTests/Pods-SchoolDiary-SchoolDiaryTests.release.xcconfig"; sourceTree = "<group>"; };
+		9500BA5186344FEAB8E82FB4 /* Archivo-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Archivo-ExtraBold.ttf"; path = "../assets/fonts/Archivo-ExtraBold.ttf"; sourceTree = "<group>"; };
+		9D7FC451622244F5A905FA17 /* Archivo-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Archivo-Medium.ttf"; path = "../assets/fonts/Archivo-Medium.ttf"; sourceTree = "<group>"; };
+		AEE8ACFEFF5D4C39A0668168 /* Archivo-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Archivo-Thin.ttf"; path = "../assets/fonts/Archivo-Thin.ttf"; sourceTree = "<group>"; };
+		B085A459A25449E29A534525 /* Archivo-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Archivo-Regular.ttf"; path = "../assets/fonts/Archivo-Regular.ttf"; sourceTree = "<group>"; };
+		EAC07ADD942E4B2EB5713EA9 /* Archivo-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Archivo-Light.ttf"; path = "../assets/fonts/Archivo-Light.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		344656CFBB9142C78D8DFC96 /* Archivo-Black.ttf */ = {isa = PBXFileReference; name = "Archivo-Black.ttf"; path = "../assets/fonts/Archivo-Black.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		131E752158EA4438AA8F4B13 /* Archivo-Bold.ttf */ = {isa = PBXFileReference; name = "Archivo-Bold.ttf"; path = "../assets/fonts/Archivo-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		9500BA5186344FEAB8E82FB4 /* Archivo-ExtraBold.ttf */ = {isa = PBXFileReference; name = "Archivo-ExtraBold.ttf"; path = "../assets/fonts/Archivo-ExtraBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		06C8F53D6E8D4223BD557DC4 /* Archivo-ExtraLight.ttf */ = {isa = PBXFileReference; name = "Archivo-ExtraLight.ttf"; path = "../assets/fonts/Archivo-ExtraLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		EAC07ADD942E4B2EB5713EA9 /* Archivo-Light.ttf */ = {isa = PBXFileReference; name = "Archivo-Light.ttf"; path = "../assets/fonts/Archivo-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		9D7FC451622244F5A905FA17 /* Archivo-Medium.ttf */ = {isa = PBXFileReference; name = "Archivo-Medium.ttf"; path = "../assets/fonts/Archivo-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		B085A459A25449E29A534525 /* Archivo-Regular.ttf */ = {isa = PBXFileReference; name = "Archivo-Regular.ttf"; path = "../assets/fonts/Archivo-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		5D9B1298454D4CEE85B7A090 /* Archivo-SemiBold.ttf */ = {isa = PBXFileReference; name = "Archivo-SemiBold.ttf"; path = "../assets/fonts/Archivo-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		AEE8ACFEFF5D4C39A0668168 /* Archivo-Thin.ttf */ = {isa = PBXFileReference; name = "Archivo-Thin.ttf"; path = "../assets/fonts/Archivo-Thin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,7 +168,7 @@
 			sourceTree = "<group>";
 		};
 		F8F3CFCB5D7F403D9E98C17B /* Resources */ = {
-			isa = "PBXGroup";
+			isa = PBXGroup;
 			children = (
 				344656CFBB9142C78D8DFC96 /* Archivo-Black.ttf */,
 				131E752158EA4438AA8F4B13 /* Archivo-Bold.ttf */,
@@ -181,8 +181,8 @@
 				AEE8ACFEFF5D4C39A0668168 /* Archivo-Thin.ttf */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
 			path = "";
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -609,7 +609,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -681,7 +681,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

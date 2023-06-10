@@ -14,6 +14,12 @@ import LoginFirstComponent from '../../../assets/svgs/LoginFirst';
 import LoginSecondComponent from '../../../assets/svgs/LoginSecond';
 import LoginThirdComponent from '../../../assets/svgs/LoginThird';
 import { useNavigation } from '@react-navigation/native';
+import { content } from '../../utils/content';
+import { globalstyles } from '../../utils/globalstyle';
+import Button from '../../components/button/Button';
+import axios from 'axios';
+import { apiConstants } from '../../helper/apiConstants';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const { width, height } = Dimensions.get('window');
 const LoginScreen = () => {
 
@@ -24,26 +30,18 @@ const LoginScreen = () => {
         {
             id: '1',
             image: <LoginVectorComponent width={Width(290)} height={Height(230)} />,
-            title: 'Easily Find Nearby',
-            subtitle: 'Hold My hand tight as i want to grow old with you from this day forth.',
         },
         {
             id: '2',
             image: <LoginFirstComponent width={Width(290)} height={Height(230)} />,
-            title: 'Find Someone Special',
-            subtitle: 'You are the only thing that exists in the world.',
         },
         {
             id: '3',
             image: <LoginSecondComponent width={Width(290)} height={Height(230)} />,
-            title: 'Start Dating',
-            subtitle: 'Date with your partner and enjoy it.',
         },
         {
             id: '4',
             image: <LoginThirdComponent width={Width(290)} height={Height(230)} />,
-            title: 'Start Dating',
-            subtitle: 'Date with your partner and enjoy it.',
         },
     ];
 
@@ -103,6 +101,14 @@ const LoginScreen = () => {
         );
     };
 
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await AsyncStorage.getItem('idToken')
+            console.log({ data });
+        }
+        fetchData()
+    }, [])
+
 
 
     const [userName, setUserName] = useState('');
@@ -113,7 +119,7 @@ const LoginScreen = () => {
     const Validation = async () => {
         var userNameValid = false;
         if (userName.length === 0) {
-            setUserNameError('Please enter a user name');
+            setUserNameError(content.enterUserName);
         } else {
             setUserNameError('');
             userNameValid = true;
@@ -121,20 +127,45 @@ const LoginScreen = () => {
 
         var passwordValid = false;
         if (password.length === 0) {
-            setPasswordError('Password is required');
+            setPasswordError(content.passwordRequired);
         } else if (password.length < 6) {
-            setPasswordError('Password should be minimum 6 characters');
+            setPasswordError(content.passwordMinChar);
         } else if (password.indexOf(' ') >= 0) {
-            setPasswordError('Password cannot contain spaces');
+            setPasswordError(content.passwordSpaces);
         } else {
             setPasswordError('');
             passwordValid = true;
         }
 
         if (userNameValid && passwordValid === true) {
-            navigation.navigate('Tab')
+            const data = {
+                S_icard_Id: userName,
+                S_Password: password
+            }
+
+            try {
+                const resonse = await axios.post(apiConstants.loginStudent, data,
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    }
+                )
+                console.log({ resonse });
+                if (resonse.status === 200) {
+                    console.log('Login successful');
+                    await AsyncStorage.setItem('idToken', resonse.data.authtoken)
+                }
+            } catch (error) {
+                console.log({ error });
+            }
         }
     }
+
+
+
+
+
 
     return (
         <LinearGradient
@@ -159,10 +190,10 @@ const LoginScreen = () => {
                 />
                 <Footer />
                 <View style={styles.view}>
-                    <Text style={styles.signInText}>Let’s Sign in</Text>
-                    <Text style={styles.subText}>Welcome back, You’ve been missed!</Text>
+                    <Text style={styles.signInText}>{content.letsSignIn}</Text>
+                    <Text style={styles.subText}>{content.welcomeBack}</Text>
 
-                    <DropShadow style={styles.dropShadow}>
+                    <DropShadow style={globalstyles.dropShadow}>
                         <View style={styles.textView}>
                             <TextInput
                                 placeholder="Username"
@@ -181,7 +212,7 @@ const LoginScreen = () => {
                     {userNameError.length > 0 && (
                         <Text style={styles.errorText}>{userNameError}</Text>
                     )}
-                    <DropShadow style={styles.dropShadow}>
+                    <DropShadow style={globalstyles.dropShadow}>
                         <View style={styles.textView}>
                             <TextInput
                                 placeholder="Password"
@@ -208,19 +239,12 @@ const LoginScreen = () => {
                     {passwordError.length > 0 && (
                         <Text style={styles.errorText}>{passwordError}</Text>
                     )}
-                    <TouchableOpacity style={styles.btn} onPress={() => Validation()}>
-                        <LinearGradient
-                            colors={[
-                                colors.gradientPrimaryColor,
-                                colors.gradientSecondaryColor,
-                            ]}
-                            start={{ x: 0, y: 0 }}
-                            end={{ x: 1, y: 0 }}
-                            style={styles.btn}
-                        >
-                            <Text style={styles.btnText}>LOG IN</Text>
-                        </LinearGradient>
-                    </TouchableOpacity>
+                    <Button
+                        onPress={() => Validation()}
+                        name={content.login}
+                        btnHeight={Height(45)}
+                        btnWidth={Width(300)}
+                    />
                 </View>
             </View>
         </LinearGradient>
@@ -298,16 +322,6 @@ const styles = StyleSheet.create({
     },
     iconView: {
         marginHorizontal: Width(10),
-    },
-    dropShadow: {
-        shadowColor: colors.placeholderColor,
-        shadowOffset: {
-            width: 0,
-            height: 0,
-        },
-        shadowOpacity: 0.2,
-        shadowRadius: 5,
-        elevation: 5,
     },
     btn: {
         height: Height(45),

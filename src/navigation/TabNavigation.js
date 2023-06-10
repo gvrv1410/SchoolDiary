@@ -11,19 +11,34 @@ import HomeWorkActiveComponent from '../../assets/svgs/HomeWorkActive';
 import MenuComponent from '../../assets/svgs/Menu';
 import MenuActiveComponent from '../../assets/svgs/MenuActive';
 import { Height } from '../utils/responsive';
+import fonts from '../utils/fonts';
+import colors from '../utils/colors';
 
 const Tab = createBottomTabNavigator();
 const TabNavigation = () => {
     return (
-        <Tab.Navigator screenOptions={{ headerShown: false }}>
+        <Tab.Navigator screenOptions={{
+            headerShown: false, tabBarActiveTintColor: colors.textColor, tabBarInactiveTintColor: colors.blackColor, tabBarStyle: {
+                height: Height(80),
+                backgroundColor: colors.whiteColor
+            }
+        }}>
             <Tab.Screen name='Home' component={HomeScreen}
                 options={() => ({
                     tabBarIcon: ({ focused }) => {
                         return (
                             !focused ? <HomeComponent size={Height(20)} /> : <HomeActiveComponent size={Height(20)} />
                         )
-                    }
-                })}
+                    },
+                    tabBarLabelStyle: {
+                        fontSize: Height(12),
+                        fontFamily: fonts.ARCHIVO_REGULAR,
+                    },
+
+                })
+                }
+
+
             />
             <Tab.Screen name='HomeWork' component={HomeWorkScreen}
                 options={() => ({
