@@ -1,5 +1,5 @@
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from '../../components/header/Header'
 import HomeWorkHeaderComponent from '../../../assets/svgs/HomeWorkHeader'
 import { useNavigation } from '@react-navigation/native'
@@ -11,12 +11,26 @@ import fonts from '../../utils/fonts'
 import DropShadow from 'react-native-drop-shadow'
 import { content } from '../../utils/content'
 import { globalstyles } from '../../utils/globalstyle'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchSubjectData } from '../../redux/reducer/subjectReducer'
 
 const MaterialScreen = () => {
     const navigation = useNavigation()
     const showBack = true;
     const imageShow = false;
     const textShow = true;
+
+
+    const dispatch = useDispatch();
+    const subjectData = useSelector((state) => state.subject);
+
+    useEffect(() => {
+        dispatch(fetchSubjectData());
+    }, [dispatch]);
+
+    console.log({ sub: subjectData.data });
+
+
     return (
         <View style={globalstyles.container}>
             <Header
@@ -28,12 +42,12 @@ const MaterialScreen = () => {
                 onPress={() => navigation.goBack()}
             />
             <FlatList
-                data={subject}
+                data={subjectData.data}
                 renderItem={({ item }) => {
                     return (
                         <DropShadow style={globalstyles.dropShadow}>
                             <TouchableOpacity style={styles.flatListView} onPress={() => navigation.navigate('MaterialDetail', { data: item })}>
-                                <Text style={styles.text}>{item.name}</Text>
+                                <Text style={styles.text}>{item.Subject_Name}</Text>
                             </TouchableOpacity>
                         </DropShadow>
                     )

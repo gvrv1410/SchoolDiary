@@ -1,4 +1,4 @@
-import { Dimensions, FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Alert, Dimensions, FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import React, { useEffect, useRef, useState } from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import DropShadow from 'react-native-drop-shadow';
@@ -20,10 +20,13 @@ import Button from '../../components/button/Button';
 import axios from 'axios';
 import { apiConstants } from '../../helper/apiConstants';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useDispatch } from 'react-redux';
+import { loginFailure, loginSuccess } from '../../redux/reducer/authReducer';
+// import { loginFailure, loginSuccess } from '../../redux/action/authActions';
 const { width, height } = Dimensions.get('window');
 const LoginScreen = () => {
 
-
+    const dispatch = useDispatch();
 
 
     const slides = [
@@ -142,22 +145,29 @@ const LoginScreen = () => {
                 S_icard_Id: userName,
                 S_Password: password
             }
-
             try {
-                const resonse = await axios.post(apiConstants.loginStudent, data,
-                    {
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                    }
-                )
-                console.log({ resonse });
-                if (resonse.status === 200) {
+                const response = await axios.post(apiConstants.loginStudent, data, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+
+                console.log({ response });
+
+                if (response.status === 200) {
                     console.log('Login successful');
-                    await AsyncStorage.setItem('idToken', resonse.data.authtoken)
+                    await AsyncStorage.setItem('idToken', response.data.authtoken);
+                    dispatch(loginSuccess(response.data.authtoken));
+                    navigation.navigate('Tab');
+                } else {
+                    console.log('Login failed');
+                    dispatch(loginFailure('Login failed'));
                 }
             } catch (error) {
                 console.log({ error });
+                dispatch(loginFailure('An error occurred'));
+                console.log("Id Doesn't exist");
+                Alert.alert('Sorry, a student with this icard-Id doesn`t exist');
             }
         }
     }

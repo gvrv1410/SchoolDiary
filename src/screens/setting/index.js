@@ -1,5 +1,5 @@
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from '../../components/header/Header'
 import colors from '../../utils/colors'
 import imageConstants from '../../helper/imageConstants'
@@ -13,12 +13,35 @@ import ForwardComponent from '../../../assets/svgs/Forward'
 import { globalstyles } from '../../utils/globalstyle'
 import Button from '../../components/button/Button'
 import { content } from '../../utils/content'
-
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../redux/reducer/authReducer'
+import { fetchStudentData } from '../../redux/reducer/studentReducer'
 const MenuScreen = () => {
     const navigation = useNavigation()
     const showBack = false;
     const imageShow = true;
     const textShow = true;
+
+    const dispatch = useDispatch();
+
+    const handleLogout = () => {
+        dispatch(logout());
+        navigation.navigate('Login')
+    };
+
+
+
+    const studentData = useSelector((state) => state.student);
+
+    useEffect(() => {
+        dispatch(fetchStudentData());
+    }, [dispatch]);
+
+    console.log({ studentData });
+
+    const class1 = studentData.data.S_Class_code
+    const rollNo1 = studentData.data.S_icard_Id
+
     return (
         <View style={globalstyles.container}>
             <Header
@@ -26,8 +49,8 @@ const MenuScreen = () => {
                 imageShow={imageShow}
                 userImage={imageConstants.userImage}
                 textShow={textShow}
-                firstText={'Hello'}
-                lastText={'Hi'}
+                firstText={studentData.data.S_name}
+                lastText={"Class : " + class1 + " | " + "Roll No : " + rollNo1}
                 onPressPro={() => navigation.navigate('Profile')}
             />
             <View>
@@ -58,6 +81,7 @@ const MenuScreen = () => {
                 name={content.logout}
                 btnHeight={Height(45)}
                 btnWidth={Width(300)}
+                onPress={handleLogout}
             />
         </View>
     )

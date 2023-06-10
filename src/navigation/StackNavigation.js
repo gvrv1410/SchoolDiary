@@ -20,29 +20,33 @@ import NotificationScreen from '../screens/notice'
 import ComplainHistory from '../screens/complain/ComplainHistory'
 import ProfileScreen from '../screens/profile'
 import MaterialsDetails from '../screens/material/MaterialsDetails'
-
+import { Provider } from 'react-redux';
+import { store } from '../redux/store/configureStore'
 const Stack = createNativeStackNavigator()
 const StackNavigation = () => {
     return (
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-            <Stack.Screen name='Login' component={LoginScreen} />
-            <Stack.Screen name='Tab' component={TabNavigation} />
-            <Stack.Screen name='Attendance' component={AttendanceScreen} />
-            <Stack.Screen name='Timetables' component={TimetableScreen} />
-            <Stack.Screen name='Complainbox' component={ComplainboxScreen} />
-            <Stack.Screen name='Exam' component={ExamScreen} />
-            <Stack.Screen name='Result' component={ResultScreen} />
-            <Stack.Screen name='Holiday' component={HolidayScreen} />
-            <Stack.Screen name='Event' component={EventScreen} />
-            <Stack.Screen name='Fees' component={FeesScreen} />
-            <Stack.Screen name='Material' component={MaterialScreen} />
-            <Stack.Screen name='HomeWorkList' component={HomeWorkList} />
-            <Stack.Screen name='HomeWorkDetail' component={HomeWorkDetail} />
-            <Stack.Screen name='Notification' component={NotificationScreen} />
-            <Stack.Screen name='ComplainHistory' component={ComplainHistory} />
-            <Stack.Screen name='Profile' component={ProfileScreen} />
-            <Stack.Screen name='MaterialDetail' component={MaterialsDetails} />
-        </Stack.Navigator>
+        <Provider store={store}>
+
+            <Stack.Navigator screenOptions={{ headerShown: false }}>
+                <Stack.Screen name='Tab' component={TabNavigation} />
+                <Stack.Screen name='Login' component={LoginScreen} />
+                <Stack.Screen name='Attendance' component={AttendanceScreen} />
+                <Stack.Screen name='Timetables' component={TimetableScreen} />
+                <Stack.Screen name='Complainbox' component={ComplainboxScreen} />
+                <Stack.Screen name='Exam' component={ExamScreen} />
+                <Stack.Screen name='Result' component={ResultScreen} />
+                <Stack.Screen name='Holiday' component={HolidayScreen} />
+                <Stack.Screen name='Event' component={EventScreen} />
+                <Stack.Screen name='Fees' component={FeesScreen} />
+                <Stack.Screen name='Material' component={MaterialScreen} />
+                <Stack.Screen name='HomeWorkList' component={HomeWorkList} />
+                <Stack.Screen name='HomeWorkDetail' component={HomeWorkDetail} />
+                <Stack.Screen name='Notification' component={NotificationScreen} />
+                <Stack.Screen name='ComplainHistory' component={ComplainHistory} />
+                <Stack.Screen name='Profile' component={ProfileScreen} />
+                <Stack.Screen name='MaterialDetail' component={MaterialsDetails} />
+            </Stack.Navigator>
+        </Provider>
     )
 }
 

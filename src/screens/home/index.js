@@ -1,5 +1,5 @@
 import { FlatList, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from '../../components/header/Header'
 import imageConstants from '../../helper/imageConstants'
 import DropShadow from 'react-native-drop-shadow'
@@ -10,13 +10,38 @@ import HomeBorderComponent from '../../../assets/svgs/HomeBorder'
 import fonts from '../../utils/fonts'
 import { useNavigation } from '@react-navigation/native'
 import { globalstyles } from '../../utils/globalstyle'
-
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchStudentData } from '../../redux/reducer/studentReducer'
 const HomeScreen = () => {
+
+    const navigation = useNavigation()
+
+    const token = useSelector(state => state.auth.token);
+
+    console.log("Home", token);
+
+    useEffect(() => {
+        if (!token) {
+            navigation.navigate('Login');
+        } else if (token !== null) {
+            navigation.navigate('Tab');
+        }
+    }, [token, navigation]);
+
     const showBack = false;
     const imageShow = true;
     const textShow = true;
 
-    const navigation = useNavigation()
+    const dispatch = useDispatch();
+    const studentData = useSelector((state) => state.student);
+
+    useEffect(() => {
+        dispatch(fetchStudentData());
+    }, [dispatch]);
+
+    const class1 = studentData.data.S_Class_code
+    const rollNo1 = studentData.data.S_icard_Id
+
 
 
     return (
@@ -27,8 +52,8 @@ const HomeScreen = () => {
                     imageShow={imageShow}
                     userImage={imageConstants.userImage}
                     textShow={textShow}
-                    firstText={'Hello'}
-                    lastText={'Hi'}
+                    firstText={studentData.data.S_name}
+                    lastText={"Class : " + class1 + " | " + "Roll No : " + rollNo1}
                     onPressNoti={() => navigation.navigate('Notification')}
                     onPressPro={() => navigation.navigate('Profile')}
                 />
@@ -98,3 +123,5 @@ const styles = StyleSheet.create({
         marginTop: Height(150)
     }
 })
+
+

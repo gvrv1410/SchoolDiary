@@ -1,5 +1,5 @@
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import colors from '../../utils/colors'
 import Header from '../../components/header/Header'
@@ -10,6 +10,8 @@ import { subject } from '../../helper/dummyData'
 import DropShadow from 'react-native-drop-shadow'
 import fonts from '../../utils/fonts'
 import { globalstyles } from '../../utils/globalstyle'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchSubjectData } from '../../redux/reducer/subjectReducer'
 
 const HomeWorkList = () => {
     const navigation = useNavigation()
@@ -44,7 +46,14 @@ const HomeWorkList = () => {
 
 
 
+    const dispatch = useDispatch();
+    const subjectData = useSelector((state) => state.subject);
 
+    useEffect(() => {
+        dispatch(fetchSubjectData());
+    }, [dispatch]);
+
+    console.log({ sub: subjectData.data });
 
     return (
         <View style={globalstyles.container}>
@@ -58,12 +67,12 @@ const HomeWorkList = () => {
                 onPress={() => navigation.goBack()}
             />
             <FlatList
-                data={subject}
+                data={subjectData.data}
                 renderItem={({ item }) => {
                     return (
                         <DropShadow style={globalstyles.dropShadow}>
                             <TouchableOpacity style={styles.flatListView} onPress={() => navigation.navigate('HomeWorkDetail', { data: item })}>
-                                <Text style={styles.text}>{item.name}</Text>
+                                <Text style={styles.text}>{item.Subject_Name}</Text>
                             </TouchableOpacity>
                         </DropShadow>
                     )
