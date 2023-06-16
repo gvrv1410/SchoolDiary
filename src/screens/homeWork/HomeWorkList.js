@@ -12,6 +12,7 @@ import fonts from '../../utils/fonts'
 import { globalstyles } from '../../utils/globalstyle'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchSubjectData } from '../../redux/reducer/subjectReducer'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const HomeWorkList = () => {
     const navigation = useNavigation()
@@ -55,6 +56,8 @@ const HomeWorkList = () => {
 
     console.log({ sub: subjectData.data });
 
+
+
     return (
         <View style={globalstyles.container}>
             <Header
@@ -71,7 +74,7 @@ const HomeWorkList = () => {
                 renderItem={({ item }) => {
                     return (
                         <DropShadow style={globalstyles.dropShadow}>
-                            <TouchableOpacity style={styles.flatListView} onPress={() => navigation.navigate('HomeWorkDetail', { data: item })}>
+                            <TouchableOpacity style={styles.flatListView} onPress={() => { navigation.navigate('HomeWorkDetail', { data: item, date: formattedDate }) }}>
                                 <Text style={styles.text}>{item.Subject_Name}</Text>
                             </TouchableOpacity>
                         </DropShadow>

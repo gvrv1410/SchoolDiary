@@ -254,6 +254,10 @@ const LoginScreen = () => {
                         name={content.login}
                         btnHeight={Height(45)}
                         btnWidth={Width(300)}
+                        alignSelf='center'
+                        alignItems='center'
+                        justifyContent='center'
+                        marginTop={Height(25)}
                     />
                 </View>
             </View>

@@ -1,13 +1,9 @@
 import { StyleSheet, Text, View, TextInput } from 'react-native'
 import React, { useState } from 'react'
 import DropShadow from "react-native-drop-shadow";
-import { Height } from '../../utils/responsive';
+import { Height, Width } from '../../utils/responsive';
 import colors from '../../utils/colors';
-const Textinput = (props) => {
-    const [text, setText] = useState('');
-    const handleChangeText = (inputText) => {
-        setText(inputText);
-    };
+const Textinput = ({ onChangeText, value, placeholder, height, multiline }) => {
     return (
         <View>
             <DropShadow
@@ -22,10 +18,11 @@ const Textinput = (props) => {
                     elevation: 5,
                 }}>
                 <TextInput
-                    style={styles.input}
-                    onChangeText={handleChangeText}
-                    value={text}
-                    placeholder={props.placeholder}
+                    style={[styles.input, { height: height }]}
+                    onChangeText={onChangeText}
+                    value={value}
+                    placeholder={placeholder}
+                    multiline={multiline}
                 />
             </DropShadow>
         </View>
@@ -36,7 +33,10 @@ export default Textinput
 
 const styles = StyleSheet.create({
     input: {
-        height: Height(50),
-        backgroundColor: colors.whiteColor
+        backgroundColor: colors.whiteColor,
+        width: Width(350),
+        alignSelf: 'center',
+        marginTop: Height(10),
+        paddingHorizontal: Width(20)
     }
 })

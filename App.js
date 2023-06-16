@@ -5,23 +5,18 @@ import { createStore } from 'redux';
 import rootReducer from './src/redux/store/rootReducer';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
-import { persistor } from './src/redux/store/configureStore';
-import { configureStore } from '@reduxjs/toolkit';
-import { logger } from 'redux-logger'
+import { persistor, store } from './src/redux/store/configureStore';
 
 
-const store = configureStore({
-    reducer: rootReducer,
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
-});
+
 const App = () => {
     return (
         <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
-
                 <AppNavigation />
             </PersistGate>
         </Provider>
+
     )
 }
 

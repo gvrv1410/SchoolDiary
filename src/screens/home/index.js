@@ -24,7 +24,7 @@ const HomeScreen = () => {
         if (!token) {
             navigation.navigate('Login');
         } else if (token !== null) {
-            navigation.navigate('Tab');
+            navigation.navigate('Home');
         }
     }, [token, navigation]);
 
@@ -34,13 +34,34 @@ const HomeScreen = () => {
 
     const dispatch = useDispatch();
     const studentData = useSelector((state) => state.student);
+    // console.log({ Student: studentData.data.data });
+
+    var Student
+    if (studentData && studentData.data) {
+        Student = studentData.data.data;
+        // Rest of your code that depends on Student
+    } else {
+        // Handle the case when studentData is null or undefined
+        // For example, you can set a default value or show an error message
+    }
 
     useEffect(() => {
         dispatch(fetchStudentData());
     }, [dispatch]);
 
-    const class1 = studentData.data.S_Class_code
-    const rollNo1 = studentData.data.S_icard_Id
+    var sCode
+    if (Student) {
+        sCode = Student.S_Class_code;
+    } else {
+        console.log('Student object is null');
+    }
+
+    var sId
+    if (Student) {
+        sId = Student.S_icard_Id;
+    } else {
+        console.log('Student object is null');
+    }
 
 
 
@@ -52,8 +73,8 @@ const HomeScreen = () => {
                     imageShow={imageShow}
                     userImage={imageConstants.userImage}
                     textShow={textShow}
-                    firstText={studentData.data.S_name}
-                    lastText={"Class : " + class1 + " | " + "Roll No : " + rollNo1}
+                    firstText={Student && Student.S_name}
+                    lastText={"Class : " + sCode + " | " + "Roll No : " + sId}
                     onPressNoti={() => navigation.navigate('Notification')}
                     onPressPro={() => navigation.navigate('Profile')}
                 />

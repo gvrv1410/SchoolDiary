@@ -1,5 +1,5 @@
 import { FlatList, Platform, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import colors from '../../utils/colors'
 import Header from '../../components/header/Header'
 import HomeWorkHeaderComponent from '../../../assets/svgs/HomeWorkHeader'
@@ -7,8 +7,9 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import { Height, Width } from '../../utils/responsive'
 import DropShadow from 'react-native-drop-shadow'
 import fonts from '../../utils/fonts'
-import { homeWorkData } from '../../helper/dummyData'
 import { globalstyles } from '../../utils/globalstyle'
+import makeAPIRequest from '../../helper/global'
+import { apiConstants, POST } from '../../helper/apiConstants'
 
 const HomeWorkDetail = () => {
     const navigation = useNavigation()
@@ -16,6 +17,53 @@ const HomeWorkDetail = () => {
     const showBack = true;
     const imageShow = false;
     const textShow = false;
+
+    const [data, setData] = useState([])
+
+    const monthMap = {
+        January: "01",
+        February: "02",
+        March: "03",
+        April: "04",
+        May: "05",
+        June: "06",
+        July: "07",
+        August: "08",
+        September: "09",
+        October: "10",
+        November: "11",
+        December: "12",
+    };
+
+    const dateString = route.params?.date;
+    const dateParts = dateString.split(" ");
+    const day = dateParts[0];
+    const month = monthMap[dateParts[1]];
+    const year = dateParts[3];
+
+    const formattedDate = `${year}-${month}-${day}`;
+
+    const SubCode = route.params?.data.Subject_Code
+
+    useEffect(() => {
+        fetchData()
+    }, [])
+
+    const fetchData = async () => {
+        const data = {
+            Subject_code: SubCode,
+            Homework_given_date: formattedDate
+        }
+        try {
+            const response = await makeAPIRequest(POST, apiConstants.fetchHomeWork, data)
+            console.log({ response });
+            setData(response.data)
+        } catch (error) {
+            console.log({ error });
+        }
+    }
+
+
     return (
         <View style={globalstyles.container}>
             <View>
@@ -23,7 +71,7 @@ const HomeWorkDetail = () => {
                     showBack={showBack}
                     imageShow={imageShow}
                     textShow={textShow}
-                    firstText={route.params?.data.name}
+                    firstText={route.params?.data.Subject_Name}
                     dynamicImage={<HomeWorkHeaderComponent size={Height(120)} />}
                     onPress={() => navigation.goBack()}
                 />
@@ -36,15 +84,23 @@ const HomeWorkDetail = () => {
 
 
             <FlatList
-                data={homeWorkData}
+                data={data}
                 style={{ marginTop: Height(60) }}
                 renderItem={({ item }) => {
+                    const dateString = item.Homework_due_date;
+                    const date = new Date(dateString);
+                    const formattedDate = date.toLocaleDateString("en-GB");
+
+                    console.log(formattedDate); // Output: "20/05/2023"
+
                     return (
                         <DropShadow style={globalstyles.dropShadow}>
                             <View style={styles.view}>
-                                <Text style={styles.text}>{item.title}</Text>
-                                <Text style={styles.subText}>{item.description}</Text>
-                                <Text style={styles.dateText}>Due Date :{item.dueDate}</Text>
+                                <Text style={styles.text}>{item.Homework_title}</Text>
+                                <View style={{ height: Height(100), }}>
+                                    <Text style={styles.subText}>{item.Homework_description}</Text>
+                                </View>
+                                <Text style={styles.dateText}>Due Date :{formattedDate}</Text>
                             </View>
                         </DropShadow>
                     )
@@ -105,7 +161,7 @@ const styles = StyleSheet.create({
         color: colors.blackColor,
         fontFamily: fonts.ARCHIVO_REGULAR,
         letterSpacing: 0.8,
-        marginTop: Height(50),
+        marginTop: Height(20),
         alignSelf: 'flex-end',
 
     }

@@ -5,16 +5,16 @@ import colors from '../../utils/colors'
 import { Height, Width } from '../../utils/responsive'
 import fonts from '../../utils/fonts'
 
-const Button = ({ name, onPress, btnHeight, btnWidth }) => {
+const Button = ({ name, onPress, btnHeight, btnWidth, justifyContent, alignItems, alignSelf, marginTop }) => {
     return (
-        <TouchableOpacity style={[styles.btn, { height: btnHeight, width: btnWidth }]} onPress={onPress}>
+        <TouchableOpacity style={[styles.btn, { height: btnHeight, width: btnWidth, justifyContent: justifyContent, alignItems: alignItems, alignSelf: alignSelf, marginTop: marginTop }]} onPress={onPress}>
             <LinearGradient colors={[
                 colors.gradientPrimaryColor,
                 colors.gradientSecondaryColor,
             ]}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 0 }}
-                style={[styles.btn, { height: btnHeight, width: btnWidth }]}>
+                style={[styles.btn, { height: btnHeight, width: btnWidth, justifyContent: justifyContent, alignItems: alignItems, alignSelf: alignSelf, marginTop: marginTop }]}>
                 <Text style={styles.btnText}>{name}</Text>
             </LinearGradient>
         </TouchableOpacity>
@@ -25,11 +25,8 @@ export default Button
 
 const styles = StyleSheet.create({
     btn: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        alignSelf: 'center',
         borderRadius: Width(2),
-        marginTop: Height(25),
+
     },
     btnText: {
         fontSize: Height(20),

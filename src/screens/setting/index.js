@@ -39,8 +39,8 @@ const MenuScreen = () => {
 
     console.log({ studentData });
 
-    const class1 = studentData.data.S_Class_code
-    const rollNo1 = studentData.data.S_icard_Id
+    const class1 = studentData.data.data.S_Class_code
+    const rollNo1 = studentData.data.data.S_icard_Id
 
     return (
         <View style={globalstyles.container}>
@@ -82,6 +82,10 @@ const MenuScreen = () => {
                 btnHeight={Height(45)}
                 btnWidth={Width(300)}
                 onPress={handleLogout}
+                alignSelf='center'
+                alignItems='center'
+                justifyContent='center'
+                marginTop={Height(25)}
             />
         </View>
     )

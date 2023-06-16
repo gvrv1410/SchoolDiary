@@ -2,10 +2,10 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { apiConstants, POST } from '../../helper/apiConstants';
 import makeAPIRequest from '../../helper/global';
 
-export const fetchStudentData = createAsyncThunk(
-    'student/fetchData',
+export const fetchNoticeData = createAsyncThunk(
+    'notice/fetchData',
     async () => {
-        const response = await makeAPIRequest(POST, apiConstants.fetchStudent, null, null);
+        const response = await makeAPIRequest(POST, apiConstants.fetchNotice, null, null);
         try {
             console.log({ response });
             return response;
@@ -16,8 +16,8 @@ export const fetchStudentData = createAsyncThunk(
     }
 );
 
-const studentReducer = createSlice({
-    name: 'student',
+const noticeReducer = createSlice({
+    name: 'notice',
     initialState: {
         data: null,
         loading: false,
@@ -26,19 +26,19 @@ const studentReducer = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(fetchStudentData.pending, (state) => {
+            .addCase(fetchNoticeData.pending, (state) => {
                 state.loading = true;
                 state.error = null;
             })
-            .addCase(fetchStudentData.fulfilled, (state, action) => {
+            .addCase(fetchNoticeData.fulfilled, (state, action) => {
                 state.loading = false;
                 state.data = action.payload;
             })
-            .addCase(fetchStudentData.rejected, (state, action) => {
+            .addCase(fetchNoticeData.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.error.message;
             });
     },
 });
 
-export default studentReducer.reducer;
+export default noticeReducer.reducer;

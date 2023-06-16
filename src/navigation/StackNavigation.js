@@ -22,6 +22,8 @@ import ProfileScreen from '../screens/profile'
 import MaterialsDetails from '../screens/material/MaterialsDetails'
 import { Provider } from 'react-redux';
 import { store } from '../redux/store/configureStore'
+import AddComplain from '../screens/complain/AddComplain'
+import NoticeDetails from '../screens/notice/NoticeDetails'
 const Stack = createNativeStackNavigator()
 const StackNavigation = () => {
     return (
@@ -45,6 +47,8 @@ const StackNavigation = () => {
                 <Stack.Screen name='ComplainHistory' component={ComplainHistory} />
                 <Stack.Screen name='Profile' component={ProfileScreen} />
                 <Stack.Screen name='MaterialDetail' component={MaterialsDetails} />
+                <Stack.Screen name='AddComplain' component={AddComplain} />
+                <Stack.Screen name='NoticeDetails' component={NoticeDetails} />
             </Stack.Navigator>
         </Provider>
     )

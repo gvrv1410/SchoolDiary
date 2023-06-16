@@ -1,6 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
 
 const makeAPIRequest = async (method, url, data = {}) => {
 

@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 
 import { Height, Width } from '../../utils/responsive'
@@ -74,10 +74,10 @@ export default Header
 
 const styles = StyleSheet.create({
     backgroundImage: {
-        height: Height(200), width: Width(390), resizeMode: 'contain'
+        height: Height(200), width: '100%', borderBottomLeftRadius: Width(15), borderBottomRightRadius: Width(15)
     },
     view: {
-        position: 'absolute', marginTop: Height(50), paddingHorizontal: Width(20)
+        position: 'absolute', marginTop: Platform.OS === 'android' ? Height(30) : Height(50), paddingHorizontal: Width(20)
     },
     notiBtn: {
         justifyContent: 'flex-end',
