@@ -3,9 +3,13 @@ import { apiConstants, POST } from '../../helper/apiConstants';
 import makeAPIRequest from '../../helper/global';
 
 export const fetchMaterialData = createAsyncThunk(
-    'student/fetchData',
-    async () => {
-        const response = await makeAPIRequest(POST, apiConstants.fetchMaterial, null, null);
+    'student/materialData',
+    async (data) => {
+        const newData = {
+            Subject_code: data.Subject_code
+        }
+        console.log({ newData });
+        const response = await makeAPIRequest(POST, apiConstants.fetchMaterial, newData, null);
         try {
             console.log({ response });
             return response;
@@ -17,9 +21,9 @@ export const fetchMaterialData = createAsyncThunk(
 );
 
 const materialReducer = createSlice({
-    name: 'maerial',
+    name: 'material',
     initialState: {
-        data: null,
+        data: [],
         loading: false,
         error: null,
     },

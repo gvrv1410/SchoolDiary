@@ -6,8 +6,15 @@ import subjectReducer from '../reducer/subjectReducer';
 import noticeReducer from '../reducer/noticeReducer';
 import complainSlice from '../reducer/sendComplainReducer'
 import fetchComplainReducer from '../reducer/fetchComplainReducer';
-import materialReducer from '../reducer/materialReducer';
 import timeTableReducer from '../reducer/timeTableReducer';
+import deleteComplainReducer from '../reducer/deleteComplainReducer';
+import EditComplainReducer from '../reducer/EditComplainReducer';
+import homeWorkReducer from '../reducer/homeWorkReducer';
+import materialReducer from '../reducer/materialReducer';
+import examReducer from '../reducer/examReducer';
+import holidayReducer from '../reducer/holidayReducer';
+import resultReducer from '../reducer/resultReducer';
+import eventReducer from '../reducer/eventReducer';
 const rootReducer = combineReducers({
     auth: authReducer,
     student: studentReducer,
@@ -16,8 +23,15 @@ const rootReducer = combineReducers({
     notice: noticeReducer,
     compain: complainSlice,
     fetchComplain: fetchComplainReducer,
-    material: materialReducer,
-    timetable: timeTableReducer
+    materialData: materialReducer,
+    timetable: timeTableReducer,
+    deleteComplain: deleteComplainReducer,
+    editComplain: EditComplainReducer,
+    homeWorkDetails: homeWorkReducer,
+    examTimeTable: examReducer,
+    holiday: holidayReducer,
+    result: resultReducer,
+    event: eventReducer
 });
 
 export default rootReducer;

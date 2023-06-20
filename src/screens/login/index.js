@@ -107,7 +107,6 @@ const LoginScreen = () => {
     useEffect(() => {
         const fetchData = async () => {
             const data = await AsyncStorage.getItem('idToken')
-            console.log({ data });
         }
         fetchData()
     }, [])
@@ -152,21 +151,16 @@ const LoginScreen = () => {
                     },
                 });
 
-                console.log({ response });
 
                 if (response.status === 200) {
-                    console.log('Login successful');
                     await AsyncStorage.setItem('idToken', response.data.authtoken);
                     dispatch(loginSuccess(response.data.authtoken));
                     navigation.navigate('Tab');
                 } else {
-                    console.log('Login failed');
                     dispatch(loginFailure('Login failed'));
                 }
             } catch (error) {
-                console.log({ error });
                 dispatch(loginFailure('An error occurred'));
-                console.log("Id Doesn't exist");
                 Alert.alert('Sorry, a student with this icard-Id doesn`t exist');
             }
         }

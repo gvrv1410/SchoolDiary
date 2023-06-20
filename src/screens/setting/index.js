@@ -37,7 +37,6 @@ const MenuScreen = () => {
         dispatch(fetchStudentData());
     }, [dispatch]);
 
-    console.log({ studentData });
 
     const class1 = studentData.data.data.S_Class_code
     const rollNo1 = studentData.data.data.S_icard_Id

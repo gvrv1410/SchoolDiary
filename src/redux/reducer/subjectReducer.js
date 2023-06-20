@@ -8,11 +8,8 @@ import makeAPIRequest from "../../helper/global";
 export const fetchSubjectData = createAsyncThunk(
     'subject/fetchData',
     async () => {
-
-
         const response = await makeAPIRequest(POST, apiConstants.fetchStudentSubject, null);
         try {
-            console.log({ response });
             return response.data;
         } catch (error) {
             console.log({ error });

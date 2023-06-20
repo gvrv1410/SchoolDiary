@@ -28,25 +28,17 @@ const HomeWorkList = () => {
 
     const formatDate = () => {
 
-        // Convert the month index to a zero-padded string
         const monthIndex = new Date(Date.parse(month + " 1, " + year)).getMonth() + 1;
         const monthString = monthIndex.toString().padStart(2, "0");
 
-        // Get the full month name
         const fullMonth = new Date(Date.parse(month + " 1, " + year)).toLocaleString("en-US", { month: "long" });
 
-        // Format the date string as "DD Month - YYYY"
         const formattedDate = `${date.toString().padStart(2, "0")} ${fullMonth} - ${year}`;
 
         return formattedDate;
     };
 
-    // Usage example
     const formattedDate = formatDate();
-    console.log(formattedDate); // Output: "01 March - 2023"
-
-
-
     const dispatch = useDispatch();
     const subjectData = useSelector((state) => state.subject);
 
@@ -54,7 +46,6 @@ const HomeWorkList = () => {
         dispatch(fetchSubjectData());
     }, [dispatch]);
 
-    console.log({ sub: subjectData.data });
 
 
 

@@ -18,7 +18,6 @@ const HomeScreen = () => {
 
     const token = useSelector(state => state.auth.token);
 
-    console.log("Home", token);
 
     useEffect(() => {
         if (!token) {
@@ -34,15 +33,11 @@ const HomeScreen = () => {
 
     const dispatch = useDispatch();
     const studentData = useSelector((state) => state.student);
-    // console.log({ Student: studentData.data.data });
 
     var Student
     if (studentData && studentData.data) {
         Student = studentData.data.data;
-        // Rest of your code that depends on Student
     } else {
-        // Handle the case when studentData is null or undefined
-        // For example, you can set a default value or show an error message
     }
 
     useEffect(() => {
@@ -53,14 +48,12 @@ const HomeScreen = () => {
     if (Student) {
         sCode = Student.S_Class_code;
     } else {
-        console.log('Student object is null');
     }
 
     var sId
     if (Student) {
         sId = Student.S_icard_Id;
     } else {
-        console.log('Student object is null');
     }
 
 

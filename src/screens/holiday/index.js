@@ -1,51 +1,44 @@
 import { Platform, ScrollView, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import Header from '../../components/header/Header'
-import ResultHeaderComponent from '../../../assets/svgs/ResultHeader'
 import { Height, Width } from '../../utils/responsive'
 import { useNavigation } from '@react-navigation/native'
 import HolidayHeaderComponent from '../../../assets/svgs/HolidayHeader'
 import fonts from '../../utils/fonts'
 import colors from '../../utils/colors'
 import { Calendar } from 'react-native-calendars'
-import DropShadow from 'react-native-drop-shadow'
 import { content } from '../../utils/content'
 import { globalstyles } from '../../utils/globalstyle'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchStudentHoliday } from '../../redux/reducer/holidayReducer'
+import DropShadow from 'react-native-drop-shadow'
 
 const HolidayScreen = () => {
     const navigation = useNavigation()
     const showBack = true;
     const imageShow = false;
     const textShow = true;
-
-
-
-
-
     const [markedDates, setMarkedDates] = useState({});
-    const attendanceData = [
-        { date: '2023-05-01', status: 'holiday', holidayName: 'Ram Navami' },
-        { date: '2023-05-05', status: 'holiday', holidayName: 'Hanuman Jayanti' },
-        { date: '2023-05-10', status: 'holiday', holidayName: 'Parshuram Jayanti' },
-    ];
-
     useEffect(() => {
-
         const markDate = (date, color) => {
             const markedDate = {};
             markedDate[date] = { customStyles: { container: { backgroundColor: color } } };
             setMarkedDates((prevMarkedDates) => ({ ...prevMarkedDates, ...markedDate }));
         };
-
-
-
-        attendanceData.forEach((data) => {
-            const { date, status } = data;
-            markDate(date, status !== 'holiday' ? 'transparent' : '#E8B510');
-
-        });
+        holiday.data && holiday.data.forEach((data) => {
+            const date = new Date(data.Holiday_Start);
+            var formattedDate = date.toISOString().slice(0, 10);
+            markDate(formattedDate, formattedDate ? '#E8B510' : 'transparent');
+        })
+        markDate()
     }, []);
 
+
+    const dispatch = useDispatch();
+    const holiday = useSelector((state) => state.holiday)
+    useEffect(() => {
+        dispatch(fetchStudentHoliday());
+    }, [dispatch]);
 
     return (
         <View style={globalstyles.container}>
@@ -57,54 +50,58 @@ const HolidayScreen = () => {
                 dynamicImage={<HolidayHeaderComponent size={Height(110)} />}
                 onPress={() => navigation.goBack()}
             />
-            <View style={styles.view}>
+            <ScrollView>
 
-                <View style={styles.borderView} ></View>
-                <Calendar markingType={'custom'} markedDates={markedDates} style={styles.calendarView}
-                    theme={{
-                        dayTextColor: colors.blackColor,
-                        arrowColor: colors.textColor,
-                        monthTextColor: colors.textColor,
-                        textDayFontFamily: fonts.ARCHIVO_REGULAR,
-                        textMonthFontFamily: fonts.ARCHIVO_SEMIBOLD,
-                        textDayHeaderFontFamily: fonts.ARCHIVO_MEDIUM,
-                        textMonthFontWeight: 'bold',
-                        textDayHeaderFontWeight: '300',
-                        textDayFontSize: Height(15),
-                        textMonthFontSize: Height(25),
-                        textDayHeaderFontSize: Height(15),
-                        textDayStyle: {
-                            color: colors.blackColor
-                        },
-                        textDayFontWeight: '300',
-                        weekVerticalMargin: Width(10),
-                        arrowStyle: {
-                            alignSelf: 'center',
-                        },
-                        'stylesheet.calendar.header': {
-                            week: {
-                                marginTop: 5,
-                                flexDirection: 'row',
-                                justifyContent: 'space-between'
-                            }
-                        },
-                    }}
-                />
-            </View>
-            <ScrollView style={{ marginTop: Height(420) }}>
-                {attendanceData.map((item, i) => {
-                    return (
-                        <DropShadow style={[globalstyles.dropShadow, {
-                            alignSelf: 'center',
-                            marginTop: Height(20)
-                        }]}>
-                            <View key={i} style={{ height: Height(50), width: Width(350), backgroundColor: colors.whiteColor, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Width(20) }}>
-                                <Text style={styles.text}>{item.holidayName}</Text>
-                                <Text style={styles.subText}>{item.date}</Text>
-                            </View>
-                        </DropShadow>
-                    )
-                })}
+                <View style={styles.view}>
+                    <View style={styles.borderView} ></View>
+                    <Calendar markingType={'custom'} markedDates={markedDates} style={styles.calendarView}
+                        theme={{
+                            dayTextColor: colors.blackColor,
+                            arrowColor: colors.textColor,
+                            monthTextColor: colors.textColor,
+                            textDayFontFamily: fonts.ARCHIVO_REGULAR,
+                            textMonthFontFamily: fonts.ARCHIVO_SEMIBOLD,
+                            textDayHeaderFontFamily: fonts.ARCHIVO_MEDIUM,
+                            textMonthFontWeight: 'bold',
+                            textDayHeaderFontWeight: '300',
+                            textDayFontSize: Height(15),
+                            textMonthFontSize: Height(25),
+                            textDayHeaderFontSize: Height(15),
+                            textDayStyle: {
+                                color: colors.blackColor
+                            },
+                            textDayFontWeight: '300',
+                            weekVerticalMargin: Width(10),
+                            arrowStyle: {
+                                alignSelf: 'center',
+                            },
+                            'stylesheet.calendar.header': {
+                                week: {
+                                    marginTop: 5,
+                                    flexDirection: 'row',
+                                    justifyContent: 'space-between'
+                                }
+                            },
+                        }}
+                    />
+                </View>
+                <View style={styles.scrollView}>
+                    {holiday.data && holiday.data.map((item, i) => {
+                        const date = new Date(item.Holiday_Start);
+                        var formattedDate = date.toISOString().slice(0, 10);
+                        return (
+                            <DropShadow style={[globalstyles.dropShadow, {
+                                alignSelf: 'center',
+                                marginTop: Height(20)
+                            }]} key={i}>
+                                <View key={i} style={styles.scrollSubView}>
+                                    <Text style={styles.text}>{item.Holiday_title}</Text>
+                                    <Text style={styles.subText}>{formattedDate}</Text>
+                                </View>
+                            </DropShadow>
+                        )
+                    })}
+                </View>
             </ScrollView>
         </View>
     )
@@ -192,5 +189,10 @@ const styles = StyleSheet.create({
         elevation: 5,
         borderRadius: Width(5),
     },
+    scrollView: {
+        marginTop: Height(420), marginBottom: Height(30)
+    }, scrollSubView: {
+        height: Height(50), width: Width(350), backgroundColor: colors.whiteColor, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Width(20)
+    }
 
 })

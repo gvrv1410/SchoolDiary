@@ -2,8 +2,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { apiConstants, POST } from "../../helper/apiConstants";
 import makeAPIRequest from "../../helper/global";
 
-export const fetchTimeTable = createAsyncThunk('data/fetchTimeTable', async () => {
-    const response = await makeAPIRequest(POST, apiConstants.fetchTimeTable, null)
+
+export const fetchEvent = createAsyncThunk('data/eventImg', async () => {
+    const response = await makeAPIRequest(POST, apiConstants.fetchEvent, null)
     try {
         return response.data;
     } catch (error) {
@@ -12,8 +13,9 @@ export const fetchTimeTable = createAsyncThunk('data/fetchTimeTable', async () =
     }
 })
 
-const fetchTimeTableReducer = createSlice({
-    name: 'timeTable',
+
+const eventReducer = createSlice({
+    name: 'fetchEventData',
     initialState: {
         data: null,
         loading: false,
@@ -22,19 +24,19 @@ const fetchTimeTableReducer = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(fetchTimeTable.pending, (state) => {
+            .addCase(fetchEvent.pending, (state) => {
                 state.loading = true;
                 state.error = null;
             })
-            .addCase(fetchTimeTable.fulfilled, (state, action) => {
+            .addCase(fetchEvent.fulfilled, (state, action) => {
                 state.loading = false;
                 state.data = action.payload;
             })
-            .addCase(fetchTimeTable.rejected, (state, action) => {
+            .addCase(fetchEvent.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.error.message;
             });
     },
-});
+})
 
-export default fetchTimeTableReducer.reducer;
+export default eventReducer.reducer;

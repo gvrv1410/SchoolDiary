@@ -8,8 +8,8 @@ import { Height, Width } from '../../utils/responsive'
 import DropShadow from 'react-native-drop-shadow'
 import fonts from '../../utils/fonts'
 import { globalstyles } from '../../utils/globalstyle'
-import makeAPIRequest from '../../helper/global'
-import { apiConstants, POST } from '../../helper/apiConstants'
+import { useDispatch, useSelector } from 'react-redux'
+import { homeWorkDetails } from '../../redux/reducer/homeWorkReducer'
 
 const HomeWorkDetail = () => {
     const navigation = useNavigation()
@@ -18,7 +18,6 @@ const HomeWorkDetail = () => {
     const imageShow = false;
     const textShow = false;
 
-    const [data, setData] = useState([])
 
     const monthMap = {
         January: "01",
@@ -42,28 +41,23 @@ const HomeWorkDetail = () => {
     const year = dateParts[3];
 
     const formattedDate = `${year}-${month}-${day}`;
-
     const SubCode = route.params?.data.Subject_Code
+    const dispatch = useDispatch()
+
+
+
+    const homeWork = useSelector((state) => state.homeWorkDetails)
+    const fetchData = () => {
+        const homeWorkObj = {
+            Subject_Code: SubCode,
+            Homework_given_date: formattedDate,
+        }
+        dispatch(homeWorkDetails(homeWorkObj))
+    }
 
     useEffect(() => {
         fetchData()
     }, [])
-
-    const fetchData = async () => {
-        const data = {
-            Subject_code: SubCode,
-            Homework_given_date: formattedDate
-        }
-        try {
-            const response = await makeAPIRequest(POST, apiConstants.fetchHomeWork, data)
-            console.log({ response });
-            setData(response.data)
-        } catch (error) {
-            console.log({ error });
-        }
-    }
-
-
     return (
         <View style={globalstyles.container}>
             <View>
@@ -83,29 +77,33 @@ const HomeWorkDetail = () => {
             </View>
 
 
-            <FlatList
-                data={data}
-                style={{ marginTop: Height(60) }}
-                renderItem={({ item }) => {
-                    const dateString = item.Homework_due_date;
-                    const date = new Date(dateString);
-                    const formattedDate = date.toLocaleDateString("en-GB");
-
-                    console.log(formattedDate); // Output: "20/05/2023"
-
-                    return (
-                        <DropShadow style={globalstyles.dropShadow}>
-                            <View style={styles.view}>
-                                <Text style={styles.text}>{item.Homework_title}</Text>
-                                <View style={{ height: Height(100), }}>
-                                    <Text style={styles.subText}>{item.Homework_description}</Text>
-                                </View>
-                                <Text style={styles.dateText}>Due Date :{formattedDate}</Text>
-                            </View>
-                        </DropShadow>
-                    )
-                }}
-            />
+            {
+                homeWork.data && homeWork.data.data.length === 0 ?
+                    <View style={{ marginTop: Height(60) }}>
+                        <Text>No Data Found</Text>
+                    </View>
+                    :
+                    <FlatList
+                        data={homeWork.data && homeWork.data.data}
+                        style={{ marginTop: Height(60) }}
+                        renderItem={({ item }) => {
+                            const dateString = item.Homework_due_date;
+                            const date = new Date(dateString);
+                            const formattedDate = date.toLocaleDateString("en-GB");
+                            return (
+                                <DropShadow style={globalstyles.dropShadow}>
+                                    <View style={styles.view}>
+                                        <Text style={styles.text}>{item.Homework_title}</Text>
+                                        <View style={{ height: Height(100), }}>
+                                            <Text style={styles.subText}>{item.Homework_description}</Text>
+                                        </View>
+                                        <Text style={styles.dateText}>Due Date :{formattedDate}</Text>
+                                    </View>
+                                </DropShadow>
+                            )
+                        }}
+                    />
+            }
 
         </View>
     )

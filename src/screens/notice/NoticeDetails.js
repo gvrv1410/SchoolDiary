@@ -10,12 +10,10 @@ import Pdf from 'react-native-pdf'
 import { globalstyles } from '../../utils/globalstyle'
 const NoticeDetails = () => {
     const route = useRoute()
-    console.log({ route });
     const data = route?.params.data
     const navigation = useNavigation()
     const fileUrl = `${BASE_URL}notices/${data.Notice_attechments}`
     const isPdf = fileUrl.endsWith('.pdf');
-    console.log({ isPdf });
     return (
         <View style={globalstyles.container}>
             <View style={styles.headerView}>
@@ -33,16 +31,13 @@ const NoticeDetails = () => {
                             cache: true,
                         }}
                         onLoadComplete={(numberOfPages, filePath) => {
-                            console.log(`Number of pages: ${numberOfPages}`);
                         }}
                         onPageChanged={(page, numberOfPages) => {
-                            console.log(`Current page: ${page}`);
                         }}
                         onError={error => {
                             console.log(error);
                         }}
                         onPressLink={uri => {
-                            console.log(`Link pressed: ${uri}`);
                         }}
                         style={styles.pdfView} />
                     :

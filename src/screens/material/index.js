@@ -28,7 +28,6 @@ const MaterialScreen = () => {
         dispatch(fetchSubjectData());
     }, [dispatch]);
 
-    console.log({ sub: subjectData.data });
 
 
     return (

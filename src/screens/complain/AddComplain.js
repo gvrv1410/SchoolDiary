@@ -15,7 +15,6 @@ import CustomAlert from '../../components/modal/CustomAlert'
 
 const AddComplain = () => {
     const route = useRoute()
-    console.log({ route });
     const navigation = useNavigation()
     const dispatch = useDispatch()
     const [complainTitle, setComplainTitle] = useState('')
@@ -118,7 +117,7 @@ export default AddComplain
 
 const styles = StyleSheet.create({
     backgroundImage: {
-        height: Height(200), width: Width(390), resizeMode: 'contain'
+        height: Height(200), width: '100%', borderBottomLeftRadius: Width(15), borderBottomRightRadius: Width(15)
     },
     view: {
         position: 'absolute', marginTop: Height(50), paddingHorizontal: Width(20)

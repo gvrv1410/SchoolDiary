@@ -18,7 +18,13 @@ const apiConstants = {
     fetchNotice: `${BASE_URL}api/students/get_all_notice_of_students`,
     fetchComplain: `${BASE_URL}api/students/fetch_complains_of_student`,
     fetchMaterial: `${BASE_URL}api/students/fetch_all_materials_of_the_subjects`,
-    fetchTimeTable: `${BASE_URL}api/timetable/fetch_timetable_for_students`
+    fetchTimeTable: `${BASE_URL}api/timetable/fetch_timetable_for_students`,
+    deleteComplain: `${BASE_URL}api/students/delete_complain`,
+    editComplain: `${BASE_URL}api/students/edit_complain`,
+    fetchExamTimeTable: `${BASE_URL}api/examtimetable/fetch_all_examtimetable_for_students`,
+    fetchHoliday: `${BASE_URL}api/students/get_all_holidays_of_students`,
+    fetchResults: `${BASE_URL}api/students/fetch_results_of_student`,
+    fetchEvent: `${BASE_URL}api/students/fetch_all_events_photoes`
 }
 
 

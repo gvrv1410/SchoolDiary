@@ -141,3 +141,26 @@ export const settingData = [
         navigation: ''
     }
 ]
+
+
+export const TimeTableTabData = [
+    {
+        id: 1,
+        title: 'Mon'
+    }, {
+        id: 2,
+        title: 'Tue'
+    }, {
+        id: 3,
+        title: 'Wed'
+    }, {
+        id: 4,
+        title: 'Thu'
+    }, {
+        id: 5,
+        title: 'Fri'
+    }, {
+        id: 6,
+        title: 'Sat'
+    }
+]

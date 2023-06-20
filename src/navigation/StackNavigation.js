@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import LoginScreen from '../screens/login'
 import HomeScreen from '../screens/home'
@@ -24,8 +24,19 @@ import { Provider } from 'react-redux';
 import { store } from '../redux/store/configureStore'
 import AddComplain from '../screens/complain/AddComplain'
 import NoticeDetails from '../screens/notice/NoticeDetails'
+import EditComplain from '../screens/complain/EditComplain'
+import EventImageList from '../screens/event/EventImageList'
+import EventImageView from '../screens/event/EventImageView'
+import SplashScreen from 'react-native-splash-screen'
 const Stack = createNativeStackNavigator()
 const StackNavigation = () => {
+
+    useEffect(() => {
+        setTimeout(() => {
+            SplashScreen.hide();
+        }, 2000)
+    }, [])
+
     return (
         <Provider store={store}>
 
@@ -49,6 +60,9 @@ const StackNavigation = () => {
                 <Stack.Screen name='MaterialDetail' component={MaterialsDetails} />
                 <Stack.Screen name='AddComplain' component={AddComplain} />
                 <Stack.Screen name='NoticeDetails' component={NoticeDetails} />
+                <Stack.Screen name='EditComplain' component={EditComplain} />
+                <Stack.Screen name='EventImageList' component={EventImageList} />
+                <Stack.Screen name='EventImageView' component={EventImageView} />
             </Stack.Navigator>
         </Provider>
     )

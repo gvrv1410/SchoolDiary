@@ -27,11 +27,7 @@ const NotificationScreen = () => {
     var Notice
     if (noticeData && noticeData.data) {
         Notice = noticeData.data.data;
-        console.log({ Notice: noticeData.data.data });
-        // Rest of your code that depends on Student
     } else {
-        // Handle the case when studentData is null or undefined
-        // For example, you can set a default value or show an error message
     }
     useEffect(() => {
         dispatch(fetchNoticeData());
