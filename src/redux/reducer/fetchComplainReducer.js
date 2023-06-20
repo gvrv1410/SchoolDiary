@@ -3,10 +3,10 @@ import { apiConstants, POST } from "../../helper/apiConstants";
 import makeAPIRequest from "../../helper/global";
 
 export const fetchComplainData = createAsyncThunk('data/fetchComplainData', async () => {
-    const response = await makeAPIRequest(POST, apiConstants.fetchComplain, null)
+    const response = await makeAPIRequest(POST, apiConstants.fetchComplain, 'application/json')
     try {
         console.log({ response });
-        return response.data;
+        return response;
     } catch (error) {
         console.log(error);
         throw error;

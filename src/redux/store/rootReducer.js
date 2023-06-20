@@ -15,6 +15,9 @@ import examReducer from '../reducer/examReducer';
 import holidayReducer from '../reducer/holidayReducer';
 import resultReducer from '../reducer/resultReducer';
 import eventReducer from '../reducer/eventReducer';
+import profileReducer from '../reducer/profileReducer';
+import fatherPhotoReducer from '../reducer/fatherPhotoReducer';
+import motherPhotoReducer from '../reducer/motherPhotoReducer';
 const rootReducer = combineReducers({
     auth: authReducer,
     student: studentReducer,
@@ -31,7 +34,10 @@ const rootReducer = combineReducers({
     examTimeTable: examReducer,
     holiday: holidayReducer,
     result: resultReducer,
-    event: eventReducer
+    event: eventReducer,
+    profile: profileReducer,
+    fatherp: fatherPhotoReducer,
+    motherp: motherPhotoReducer
 });
 
 export default rootReducer;

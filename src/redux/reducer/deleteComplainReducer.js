@@ -4,7 +4,7 @@ import makeAPIRequest from "../../helper/global";
 
 export const deleteComplain = createAsyncThunk('data/deleteComplain', async (data) => {
     const url = `${apiConstants.deleteComplain}/${data.id}`; // Append the ID to the URL
-    const response = await makeAPIRequest(DELETE, url, null);
+    const response = await makeAPIRequest(DELETE, url, 'application/json');
     try {
         console.log({ Delete: response });
         return response.data;

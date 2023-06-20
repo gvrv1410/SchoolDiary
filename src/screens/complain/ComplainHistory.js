@@ -30,7 +30,7 @@ const ComplainHistory = () => {
             id: item._id
         };
         dispatch(deleteComplain(deleteComplainWithId));
-        if (deleteComplainData.data.success === true) {
+        if (deleteComplainData.data && deleteComplainData.data.success === true) {
             setShowDonationSuccessPopup(true)
         }
     }
@@ -47,7 +47,7 @@ const ComplainHistory = () => {
                         <Text>No Data Found</Text>
                     </View> :
                     <FlatList
-                        data={fetchCompain.data}
+                        data={fetchCompain && fetchCompain.data}
                         renderItem={({ item }) => {
                             return (
                                 <View>

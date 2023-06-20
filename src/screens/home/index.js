@@ -35,8 +35,8 @@ const HomeScreen = () => {
     const studentData = useSelector((state) => state.student);
 
     var Student
-    if (studentData && studentData.data) {
-        Student = studentData.data.data;
+    if (studentData && studentData) {
+        Student = studentData.data;
     } else {
     }
 

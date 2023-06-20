@@ -9,7 +9,7 @@ export const editComplain = createAsyncThunk('data/editComplain', async (data) =
         Complain_descriptio: data.Complain_descriptio
     }
     console.log({ newData });
-    const response = await makeAPIRequest(PATCH, `${apiConstants.editComplain}/${data.id}`, newData, null);
+    const response = await makeAPIRequest(PATCH, `${apiConstants.editComplain}/${data.id}`, newData, 'application/json');
     try {
         console.log({ Update: response });
         return response.data;

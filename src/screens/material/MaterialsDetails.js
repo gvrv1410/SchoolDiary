@@ -1,6 +1,5 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect } from 'react'
-import colors from '../../utils/colors'
 import Header from '../../components/header/Header'
 import MaterialsComponent from '../../../assets/svgs/Materials'
 import { Height, Width } from '../../utils/responsive'
@@ -44,7 +43,7 @@ const MaterialsDetails = () => {
                 onPress={() => navigation.goBack()}
             />
             <FlatList
-                data={mData.data.data}
+                data={mData.data}
                 renderItem={({ item }) => {
                     console.log(`${BASE_URL}materials/${item.Material_files}`);
                     return (

@@ -4,9 +4,9 @@ import makeAPIRequest from "../../helper/global";
 
 
 export const fetchExamTimeTable = createAsyncThunk('data/examTimeTable', async () => {
-    const response = await makeAPIRequest(POST, apiConstants.fetchExamTimeTable, null)
+    const response = await makeAPIRequest(POST, apiConstants.fetchExamTimeTable, 'application/json')
     try {
-        return response.data;
+        return response;
     } catch (error) {
         console.log(error);
         throw error;

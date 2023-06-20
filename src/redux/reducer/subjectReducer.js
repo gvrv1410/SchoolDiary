@@ -8,9 +8,9 @@ import makeAPIRequest from "../../helper/global";
 export const fetchSubjectData = createAsyncThunk(
     'subject/fetchData',
     async () => {
-        const response = await makeAPIRequest(POST, apiConstants.fetchStudentSubject, null);
+        const response = await makeAPIRequest(POST, apiConstants.fetchStudentSubject, 'application/json');
         try {
-            return response.data;
+            return response;
         } catch (error) {
             console.log({ error });
             throw error;

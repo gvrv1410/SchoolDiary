@@ -5,7 +5,7 @@ import makeAPIRequest from '../../helper/global';
 export const fetchNoticeData = createAsyncThunk(
     'notice/fetchData',
     async () => {
-        const response = await makeAPIRequest(POST, apiConstants.fetchNotice, null, null);
+        const response = await makeAPIRequest(POST, apiConstants.fetchNotice, 'application/json');
         try {
             console.log({ response });
             return response;

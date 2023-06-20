@@ -3,8 +3,8 @@ import { apiConstants, POST } from '../../helper/apiConstants';
 import makeAPIRequest from '../../helper/global';
 
 export const sendComplainData = createAsyncThunk('data/sendComplainData', async (data) => {
-    const response = await makeAPIRequest(POST, apiConstants.addComplain, data, null);
     try {
+        const response = await makeAPIRequest(POST, apiConstants.addComplain, data, 'application/json');
         console.log({ response });
         return response.data;
     } catch (error) {

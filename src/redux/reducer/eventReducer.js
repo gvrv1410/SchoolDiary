@@ -4,9 +4,9 @@ import makeAPIRequest from "../../helper/global";
 
 
 export const fetchEvent = createAsyncThunk('data/eventImg', async () => {
-    const response = await makeAPIRequest(POST, apiConstants.fetchEvent, null)
+    const response = await makeAPIRequest(POST, apiConstants.fetchEvent, 'application/json')
     try {
-        return response.data;
+        return response;
     } catch (error) {
         console.log(error);
         throw error;

@@ -4,9 +4,9 @@ import makeAPIRequest from "../../helper/global";
 
 
 export const fetchExamResult = createAsyncThunk('data/examResult', async () => {
-    const response = await makeAPIRequest(POST, apiConstants.fetchResults, null)
+    const response = await makeAPIRequest(POST, apiConstants.fetchResults, 'application/json')
     try {
-        return response.data;
+        return response;
     } catch (error) {
         console.log(error);
         throw error;

@@ -30,7 +30,6 @@ const MenuScreen = () => {
     };
 
 
-
     const studentData = useSelector((state) => state.student);
 
     useEffect(() => {
@@ -38,8 +37,25 @@ const MenuScreen = () => {
     }, [dispatch]);
 
 
-    const class1 = studentData.data.data.S_Class_code
-    const rollNo1 = studentData.data.data.S_icard_Id
+    var Student;
+    if (studentData && studentData.data) {
+        Student = studentData.data;
+    }
+
+    useEffect(() => {
+        dispatch(fetchStudentData());
+    }, [dispatch]);
+
+    var sCode;
+    if (Student) {
+        sCode = Student.S_Class_code;
+    }
+
+    var sId;
+    if (Student) {
+        sId = Student.S_icard_Id;
+    }
+
 
     return (
         <View style={globalstyles.container}>
@@ -48,8 +64,8 @@ const MenuScreen = () => {
                 imageShow={imageShow}
                 userImage={imageConstants.userImage}
                 textShow={textShow}
-                firstText={studentData.data.S_name}
-                lastText={"Class : " + class1 + " | " + "Roll No : " + rollNo1}
+                firstText={Student && Student.S_name}
+                lastText={"Class : " + sCode + " | " + "Roll No : " + sId}
                 onPressPro={() => navigation.navigate('Profile')}
             />
             <View>

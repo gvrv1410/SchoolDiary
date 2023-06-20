@@ -5,7 +5,7 @@ import makeAPIRequest from '../../helper/global';
 export const fetchStudentData = createAsyncThunk(
     'student/fetchData',
     async () => {
-        const response = await makeAPIRequest(POST, apiConstants.fetchStudent, null, null);
+        const response = await makeAPIRequest(POST, apiConstants.fetchStudent, 'application/json');
         try {
             console.log({ response });
             return response;

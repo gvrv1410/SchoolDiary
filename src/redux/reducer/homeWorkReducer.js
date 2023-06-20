@@ -8,7 +8,7 @@ export const homeWorkDetails = createAsyncThunk('data/homeWorkDetails', async (d
         Subject_code: data.Subject_Code,
         Homework_given_date: data.Homework_given_date
     }
-    const response = await makeAPIRequest(POST, apiConstants.fetchHomeWork, newData, null)
+    const response = await makeAPIRequest(POST, apiConstants.fetchHomeWork, newData, 'application/json')
     try {
         console.log({ response });
         return response;

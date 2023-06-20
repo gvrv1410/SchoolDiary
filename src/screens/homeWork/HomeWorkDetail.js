@@ -78,7 +78,7 @@ const HomeWorkDetail = () => {
 
 
             {
-                homeWork.data && homeWork.data.data.length === 0 ?
+                homeWork.data && homeWork.data.length === 0 ?
                     <View style={{ marginTop: Height(60) }}>
                         <Text>No Data Found</Text>
                     </View>

@@ -24,7 +24,10 @@ const apiConstants = {
     fetchExamTimeTable: `${BASE_URL}api/examtimetable/fetch_all_examtimetable_for_students`,
     fetchHoliday: `${BASE_URL}api/students/get_all_holidays_of_students`,
     fetchResults: `${BASE_URL}api/students/fetch_results_of_student`,
-    fetchEvent: `${BASE_URL}api/students/fetch_all_events_photoes`
+    fetchEvent: `${BASE_URL}api/students/fetch_all_events_photoes`,
+    addStudentPhoto: `${BASE_URL}api/students/add_student_photo`,
+    addFatherPhoto: `${BASE_URL}api/students/add_student_father_photo`,
+    addMotherPhoto: `${BASE_URL}api/students/add_student_mother_photo`
 }
 
 

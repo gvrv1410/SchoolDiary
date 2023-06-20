@@ -9,7 +9,7 @@ export const fetchMaterialData = createAsyncThunk(
             Subject_code: data.Subject_code
         }
         console.log({ newData });
-        const response = await makeAPIRequest(POST, apiConstants.fetchMaterial, newData, null);
+        const response = await makeAPIRequest(POST, apiConstants.fetchMaterial, newData, 'application/json');
         try {
             console.log({ response });
             return response;
