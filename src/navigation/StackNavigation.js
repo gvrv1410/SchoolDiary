@@ -28,6 +28,7 @@ import EditComplain from '../screens/complain/EditComplain'
 import EventImageList from '../screens/event/EventImageList'
 import EventImageView from '../screens/event/EventImageView'
 import SplashScreen from 'react-native-splash-screen'
+import Payment from '../screens/fees/Payment'
 const Stack = createNativeStackNavigator()
 const StackNavigation = () => {
 
@@ -63,6 +64,7 @@ const StackNavigation = () => {
                 <Stack.Screen name='EditComplain' component={EditComplain} />
                 <Stack.Screen name='EventImageList' component={EventImageList} />
                 <Stack.Screen name='EventImageView' component={EventImageView} />
+                <Stack.Screen name='Payment' component={Payment} />
             </Stack.Navigator>
         </Provider>
     )

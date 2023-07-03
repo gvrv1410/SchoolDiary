@@ -12,6 +12,7 @@ import { useNavigation } from '@react-navigation/native'
 import { globalstyles } from '../../utils/globalstyle'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchStudentData } from '../../redux/reducer/studentReducer'
+import { BASE_URL } from '../../helper/apiConstants'
 const HomeScreen = () => {
 
     const navigation = useNavigation()
@@ -64,7 +65,7 @@ const HomeScreen = () => {
                 <Header
                     showBack={showBack}
                     imageShow={imageShow}
-                    userImage={imageConstants.userImage}
+                    userImage={Student ? { uri: `${BASE_URL}student_img/${Student.S_img}` } : imageConstants.userImage}
                     textShow={textShow}
                     firstText={Student && Student.S_name}
                     lastText={"Class : " + sCode + " | " + "Roll No : " + sId}

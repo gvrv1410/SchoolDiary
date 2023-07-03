@@ -73,6 +73,7 @@ const AddComplain = () => {
             <Textinput
                 placeholder='Complain Title'
                 height={Height(50)}
+                width={Width(350)}
                 // value={complainTitle}
                 onChangeText={(val) => setComplainTitle(val)}
             />
@@ -84,6 +85,7 @@ const AddComplain = () => {
                 placeholder='Complain Description'
                 height={Height(100)}
                 multiline={true}
+                width={Width(350)}
                 // value={complainDescription}
                 onChangeText={(val) => setCompalinDescription(val)}
             />

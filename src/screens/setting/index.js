@@ -16,6 +16,7 @@ import { content } from '../../utils/content'
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../redux/reducer/authReducer'
 import { fetchStudentData } from '../../redux/reducer/studentReducer'
+import { BASE_URL } from '../../helper/apiConstants'
 const MenuScreen = () => {
     const navigation = useNavigation()
     const showBack = false;
@@ -62,7 +63,7 @@ const MenuScreen = () => {
             <Header
                 showBack={showBack}
                 imageShow={imageShow}
-                userImage={imageConstants.userImage}
+                userImage={Student ? { uri: `${BASE_URL}student_img/${Student.S_img}` } : imageConstants.userImage}
                 textShow={textShow}
                 firstText={Student && Student.S_name}
                 lastText={"Class : " + sCode + " | " + "Roll No : " + sId}

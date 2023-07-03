@@ -31,15 +31,15 @@ const HolidayScreen = () => {
             markDate(formattedDate, formattedDate ? '#E8B510' : 'transparent');
         })
         markDate()
-        dispatch(fetchStudentHoliday());
-    }, [dispatch]);
+
+    }, []);
 
 
     const dispatch = useDispatch();
     const holiday = useSelector((state) => state.holiday)
-    // useEffect(() => {
-    //     dispatch(fetchStudentHoliday());
-    // }, [dispatch]);
+    useEffect(() => {
+        dispatch(fetchStudentHoliday());
+    }, [dispatch]);
 
     return (
         <View style={globalstyles.container}>
