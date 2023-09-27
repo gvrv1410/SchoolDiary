@@ -22,13 +22,9 @@ const ExamScreen = () => {
   const dispatch = useDispatch();
   const ExamtimeTable = useSelector((state) => state.examTimeTable);
 
-  console.log({ ExamtimeTable });
   useEffect(() => {
     dispatch(fetchExamTimeTable());
   }, [dispatch]);
-  console.log(
-    `${BASE_URL}exam_time_table/${ExamtimeTable.data.Exam_TimeTable}`
-  );
   return (
     <View style={globalstyles.container}>
       <Header
@@ -39,10 +35,9 @@ const ExamScreen = () => {
         dynamicImage={<ExamHeaderComponent size={Height(110)} />}
         onPress={() => navigation.goBack()}
       />
-      {ExamtimeTable.data.map((item, i) => {
-        console.log({ item });
+      {ExamtimeTable?.data?.map((item, i) => {
         return (
-          <View>
+          <View key={i}>
             <DropShadow
               style={{
                 shadowColor: "rgba(0, 165, 235, 0.15)",
@@ -54,7 +49,8 @@ const ExamScreen = () => {
                 shadowRadius: 5,
                 elevation: 5,
                 alignSelf: "center",
-              }}>
+              }}
+            >
               <View
                 style={{
                   height: Height(55),
@@ -63,14 +59,16 @@ const ExamScreen = () => {
                   justifyContent: "center",
                   alignItems: "center",
                   borderRadius: Width(5),
-                }}>
+                }}
+              >
                 <Text
                   style={{
                     fontSize: Height(20),
                     fontFamily: fonts.ARCHIVO_SEMIBOLD,
                     color: colors.textColor,
-                  }}>
-                  {item && item.Exam_Type}
+                  }}
+                >
+                  {item?.Exam_Type}
                 </Text>
               </View>
             </DropShadow>
@@ -78,7 +76,7 @@ const ExamScreen = () => {
             <Image
               source={{
                 uri:
-                  item && `${BASE_URL}exam_time_table/${item.Exam_TimeTable}`,
+                  item && `${BASE_URL}exam_time_table/${item?.Exam_TimeTable}`,
               }}
               style={styles.image}
             />

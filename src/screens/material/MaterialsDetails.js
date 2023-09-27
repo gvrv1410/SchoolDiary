@@ -27,11 +27,9 @@ const MaterialsDetails = () => {
   const imageShow = false;
   const textShow = true;
   const route = useRoute();
-  console.log({ route });
   const dispatch = useDispatch();
 
   const mData = useSelector((state) => state.materialData);
-  console.log({ mData });
 
   const materialDataFetch = () => {
     const materialObj = {
@@ -44,8 +42,6 @@ const MaterialsDetails = () => {
   }, [dispatch]);
 
   const handleDownload = async (img) => {
-    console.log(img);
-
     const path = `${img}/Warren.pdf`;
     await RNFetchBlob.config({
       path: path,
@@ -61,10 +57,9 @@ const MaterialsDetails = () => {
       .fetch("GET", img)
       .then(async (res) => {
         if (res && res.info().status === 200) {
-          console.log(res);
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {});
   };
 
   return (
@@ -77,52 +72,54 @@ const MaterialsDetails = () => {
         dynamicImage={<MaterialsComponent size={Height(120)} />}
         onPress={() => navigation.goBack()}
       />
-      <FlatList
-        data={mData && mData.data}
-        renderItem={({ item }) => {
-          console.log(`${BASE_URL}materials/${item.Material_files}`);
-          const imageUrl = `${BASE_URL}materials/${item.Material_files}`;
-          console.log("Image URL:", imageUrl);
-          const fileExtension = imageUrl.split(".").pop().toLowerCase();
-          console.log(fileExtension);
-          return (
-            <DropShadow style={globalstyles.dropShadow}>
-              <View style={styles.rowView}>
-                <View style={styles.view}>
-                  <View>
-                    {fileExtension === "pdf" ? (
-                      <Pdf
-                        trustAllCerts={false}
-                        onError={(error) => {
-                          console.log(error);
-                        }}
-                        source={{
-                          uri: `${BASE_URL}materials/${item.Material_files}`,
-                        }}
-                        style={styles.pdf}
-                        singlePage={true}
-                      />
-                    ) : (
-                      <Image
-                        source={{
-                          uri: `${BASE_URL}materials/${item.Material_files}`,
-                        }}
-                        style={styles.pdf}
-                      />
-                    )}
+      {mData?.data?.length === 0 ? (
+        <Text style={[styles.text, { alignSelf: "center" }]}>
+          No Data Found
+        </Text>
+      ) : (
+        <FlatList
+          data={mData && mData.data}
+          renderItem={({ item }) => {
+            const imageUrl = `${BASE_URL}materials/${item.Material_files}`;
+            const fileExtension = imageUrl.split(".").pop().toLowerCase();
+            return (
+              <DropShadow style={globalstyles.dropShadow}>
+                <View style={styles.rowView}>
+                  <View style={styles.view}>
+                    <View>
+                      {fileExtension === "pdf" ? (
+                        <Pdf
+                          trustAllCerts={false}
+                          onError={(error) => {}}
+                          source={{
+                            uri: `${BASE_URL}materials/${item?.Material_files}`,
+                          }}
+                          style={styles.pdf}
+                          singlePage={true}
+                        />
+                      ) : (
+                        <Image
+                          source={{
+                            uri: `${BASE_URL}materials/${item?.Material_files}`,
+                          }}
+                          style={styles.pdf}
+                        />
+                      )}
+                    </View>
+                    <Text style={styles.text}>{item.Material_title}</Text>
                   </View>
-                  <Text style={styles.text}>{item.Material_title}</Text>
+                  <TouchableOpacity
+                    style={styles.btnRound}
+                    onPress={() => handleDownload(imageUrl)}
+                  >
+                    <RoundComponent />
+                  </TouchableOpacity>
                 </View>
-                <TouchableOpacity
-                  style={styles.btnRound}
-                  onPress={() => handleDownload(imageUrl)}>
-                  <RoundComponent />
-                </TouchableOpacity>
-              </View>
-            </DropShadow>
-          );
-        }}
-      />
+              </DropShadow>
+            );
+          }}
+        />
+      )}
     </View>
   );
 };

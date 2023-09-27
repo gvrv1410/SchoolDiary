@@ -15,7 +15,6 @@ import Pdf from "react-native-pdf";
 import { BASE_URL } from "../../helper/apiConstants";
 import Button from "../../components/button/Button";
 import HLineComponent from "../../../assets/svgs/HLine";
-import { downloadFile, DocumentDirectoryPath } from "react-native-fs";
 const ResultScreen = () => {
   const navigation = useNavigation();
   const showBack = true;
@@ -23,24 +22,10 @@ const ResultScreen = () => {
   const textShow = true;
   const dispatch = useDispatch();
   const result = useSelector((state) => state.result);
-  console.log({ HEY: result.data === "No Result Found" });
   useEffect(() => {
     dispatch(fetchExamResult());
   }, [dispatch]);
 
-  //   const handleDownload = async (img) => {
-  //     console.log({ img });
-  //     try {
-  //       const options = {
-  //         fromUrl: img,
-  //         toFile: `${DocumentDirectoryPath}/file.jpg`,
-  //       };
-
-  //       const res = await downloadFile(options);
-  //       console.log("Downloaded file:", res);
-  //     } catch (error) {
-  //       console.log("Error:", error);
-  //     }
   //   };
   return (
     <View style={globalstyles.container}>
@@ -74,9 +59,7 @@ const ResultScreen = () => {
                 <Text style={styles.text}>{item.Result_Title}</Text>
                 <Pdf
                   trustAllCerts={false}
-                  onError={(error) => {
-                    console.log(error);
-                  }}
+                  onError={(error) => {}}
                   source={{
                     uri: `${BASE_URL}result_data/${item.Result_copy}`,
                   }}
@@ -94,10 +77,7 @@ const ResultScreen = () => {
                 />
 
                 <View style={styles.bottomView}>
-                  <HLineComponent
-                    width={Width(350)}
-                    height={Height(15)}
-                  />
+                  <HLineComponent width={Width(350)} height={Height(15)} />
                 </View>
               </View>
             );
