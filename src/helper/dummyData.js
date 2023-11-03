@@ -58,14 +58,14 @@ export const homeData = [
     name: content.events,
     navigation: "Event",
   },
+  // {
+  //   id: 8,
+  //   image: <FeesComponent />,
+  //   name: content.fees,
+  //   navigation: "Fees",
+  // },
   {
     id: 8,
-    image: <FeesComponent />,
-    name: content.fees,
-    navigation: "Fees",
-  },
-  {
-    id: 9,
     image: <MaterialComponent />,
     name: content.materials,
     navigation: "Material",
